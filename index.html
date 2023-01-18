@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>3D Image Gallery</title>
-        <link rel="stylesheet" type ="text/css" href="main.css">
-        <!-- <iframe width="0" height="0" src="https://www.youtuberepeater.com/watch?v=DVX1LNym0ac#gsc.tab=0" frameborder="0" allowfullscreen></iframe> -->
-    </head>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    
-    <body>
-        <embed src="honcamaytroi.mp3" loop="true" autostart="true" width="2"
-           height="0">
-        
-        <div class="box">
-            <span style = "--i:1;"> <img src="pa10.jpg"></span>
-            <span style = "--i:2;"> <img src="pa2.jpg"></span>
-            <span style = "--i:3;"> <img src="pa3.jpg"></span>
-            <span style = "--i:4;"> <img src="pa4.jpg"></span>
-            <span style = "--i:5;"> <img src="pa5.jpg"></span>
-            <span style = "--i:6;"> <img src="pa6.jpg"></span>
-            <span style = "--i:7;"> <img src="pa7.jpg"></span>
-            <span style = "--i:8;"> <img src="pa9.jpg"></span>
-        </div>
-        <script>
-            $(document).ready(function(){
-                $(' .box span').click(function(){
-                    if($(this).hasClass('spin')){
-                        $(' .box span').removeClass('spin');}
-                    else{
-                        $(' .box span').removeClass('spin');
-                        $(this).addClass('spin');
-                    }
-                
-                });
-            });
-        </script>
-    </body>
+  <head>
+    <title>3D Image Gallery</title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <!-- <iframe width="0" height="0" src="https://www.youtuberepeater.com/watch?v=DVX1LNym0ac#gsc.tab=0" frameborder="0" allowfullscreen></iframe> -->
+  </head>
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"
+  ></script>
 
-    
+  <body>
+    <audio controls autoplay loop>
+        <source src="honcamaytroi.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+
+    <div class="box">
+      <span style="--i: 1"> <img src="pa10.jpg" /></span>
+      <span style="--i: 2"> <img src="pa2.jpg" /></span>
+      <span style="--i: 3"> <img src="pa3.jpg" /></span>
+      <span style="--i: 4"> <img src="pa4.jpg" /></span>
+      <span style="--i: 5"> <img src="pa5.jpg" /></span>
+      <span style="--i: 6"> <img src="pa6.jpg" /></span>
+      <span style="--i: 7"> <img src="pa7.jpg" /></span>
+      <span style="--i: 8"> <img src="pa9.jpg" /></span>
+    </div>
+    <script>
+      $(document).ready(function () {
+        $(" .box span").click(function () {
+          if ($(this).hasClass("spin")) {
+            $(" .box span").removeClass("spin");
+          } else {
+            $(" .box span").removeClass("spin");
+            $(this).addClass("spin");
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
