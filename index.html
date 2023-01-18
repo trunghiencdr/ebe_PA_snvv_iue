@@ -3,7 +3,14 @@
   <head>
     <title>3D Image Gallery</title>
     <link rel="stylesheet" type="text/css" href="main.css" />
-    <!-- <iframe width="0" height="0" src="https://www.youtuberepeater.com/watch?v=DVX1LNym0ac#gsc.tab=0" frameborder="0" allowfullscreen></iframe> -->
+
+    <iframe
+      width="0"
+      height="0"
+      src="https://www.youtuberepeater.com/watch?v=DVX1LNym0ac#gsc.tab=0"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
   </head>
   <script
     src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -12,10 +19,7 @@
   ></script>
 
   <body>
-    <audio controls autoplay loop>
-        <source src="honcamaytroi.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-      </audio>
+    <audio id="my_audio" src="honcamaytroi.mp3" loop="loop"></audio>
 
     <div class="box">
       <span style="--i: 1"> <img src="pa10.jpg" /></span>
@@ -37,6 +41,10 @@
             $(this).addClass("spin");
           }
         });
+      });
+
+      $(document).ready(function () {
+        $("#my_audio").get(0).play();
       });
     </script>
   </body>
