@@ -4,33 +4,50 @@
     <title>3D Image Gallery</title>
     <link rel="stylesheet" type="text/css" href="main.css" />
 
-    <iframe
+    <!-- <iframe
       width="0"
       height="0"
       src="https://www.youtuberepeater.com/watch?v=DVX1LNym0ac#gsc.tab=0"
       frameborder="0"
       allowfullscreen
-    ></iframe>
+    ></iframe> -->
   </head>
   <script
     src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
     crossorigin="anonymous"
-  ></script>
+  >
+    function play() {
+            var audio = document.getElementById("audio");
+            audio.play().then();
+          }
+  </script>
 
   <body>
     <audio id="my_audio" src="honcamaytroi.mp3" loop="loop"></audio>
-
-    <div class="box">
-      <span style="--i: 1"> <img src="pa10.jpg" /></span>
-      <span style="--i: 2"> <img src="pa2.jpg" /></span>
-      <span style="--i: 3"> <img src="pa3.jpg" /></span>
-      <span style="--i: 4"> <img src="pa4.jpg" /></span>
-      <span style="--i: 5"> <img src="pa5.jpg" /></span>
-      <span style="--i: 6"> <img src="pa6.jpg" /></span>
-      <span style="--i: 7"> <img src="pa7.jpg" /></span>
-      <span style="--i: 8"> <img src="pa9.jpg" /></span>
+    <div class="alert">
+      <p>This webpage would like to play sounds</p>
+      <p class="buttons">
+        <button value="0">Block</button>
+        <button value="1">Allow</button>
+      </p>
     </div>
+    <div style="display: flex; justify-content: center;align-items: center;">
+        <button class="button-89" id="btnPlay" >Play music</button>
+    </div>
+    
+    <div class="parentbox"><div class="box">
+        <span style="--i: 1"> <img src="pa10.jpg" /></span>
+        <span style="--i: 2"> <img src="pa2.jpg" /></span>
+        <span style="--i: 3"> <img src="pa3.jpg" /></span>
+        <span style="--i: 4"> <img src="pa4.jpg" /></span>
+        <span style="--i: 5"> <img src="pa5.jpg" /></span>
+        <span style="--i: 6"> <img src="pa6.jpg" /></span>
+        <span style="--i: 7"> <img src="pa7.jpg" /></span>
+        <span style="--i: 8"> <img src="pa9.jpg" /></span>
+      </div></div>
+    
+
     <script>
       $(document).ready(function () {
         $(" .box span").click(function () {
@@ -43,9 +60,46 @@
         });
       });
 
-      $(document).ready(function () {
-        $("#my_audio").get(0).play();
+      const audio = new Audio("honcamaytroi.mp3");
+      audio.loop = true;
+      audio.muted = true;
+
+      const alert_elem = document.querySelector(".alert");
+
+      audio
+        .play()
+        .then(() => {
+          // already allowed
+          alert_elem.remove();
+          resetAudio();
+        })
+        .catch(() => {
+          // need user interaction
+          alert_elem.addEventListener("click", ({ target }) => {
+            if (target.matches("button")) {
+              const allowed = target.value === "1";
+              if (allowed) {
+                audio.play().then(resetAudio);
+              }
+              alert_elem.remove();
+            }
+          });
+        });
+
+      document.getElementById("btnPlay").addEventListener("click", (e) => {
+        if (audio.muted) {
+          console.log("silent notification");
+        } else {
+        document.getElementById("btnPlay").style.display = "none";
+          audio.play();
+        }
       });
+
+      function resetAudio() {
+        audio.pause();
+        audio.currentTime = 0;
+        audio.muted = false;
+      }
     </script>
   </body>
 </html>
